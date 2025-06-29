@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 from heuristicas import iterated_greedy
-from util import ler_instancia_pt, calcular_makespan
+from util import ler_instancia, calcular_makespan
 
 def main():
     pasta = "data"
@@ -11,7 +11,7 @@ def main():
             caminho = os.path.join(pasta, nome)
             print(f"Processando {nome}...")
             try:
-                tempos = ler_instancia_pt(caminho)
+                tempos = ler_instancia(caminho)
                 seq = iterated_greedy(tempos, limite=600)
                 mk = calcular_makespan(seq, tempos)
                 resultados.append({"Instância": nome, "Makespan": mk, "Sequência": seq})
